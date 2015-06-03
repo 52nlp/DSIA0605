@@ -68,25 +68,7 @@ mode(chrMixDoubleMixLogiList[[3]])
 factorParking <- factor(Hospital_Parking)
 factorParking
 levels(factorParking)
-levels(factorParking) <- c("F", "M")
-
-gender <- ordered(c("Male", "Female", "Male", "Male", "Female"))
-gender
-levels(gender)
-
-gender <- factor(c("Male", "Female", "Male", "Male", "Female"), levels=c("Male", "Female"))
-gender
-levels(gender)
-
-gender <- factor(c("M", "F", "M", "M", "F"))
-gender
-levels(gender<-c("F", "M"))
-gender
-
-income <- factor(c("Lo", "Mid", "Hi", "Mid", "Lo", "Hi", "Lo"))
-income
-relevel(income, ref="Lo")
-income
+levels(factorParking) <- c("TRUE", "FALSE")
 
 # ORDERED
 income <- ordered(c("Mid", "Hi", "Lo", "Mid", "Lo", "Hi", "Lo"))
@@ -102,10 +84,11 @@ subjectid<-c(1, 2, 3, 4)
 age<-c(35, 55, 45, 25)
 sex<-c("Male", "Male", "Female", "Female")
 disease<-c("Yes", "No", "No", "Yes")
-x.data <- data.frame(subjectid, age, sex, disease)
+xData <- data.frame(subjectid, age, sex, disease)
 
-mode(x.data)
-class(x.data)
+mode(xData)
+class(xData)
+
 
 
 ### Function
@@ -161,7 +144,8 @@ locator()
 browseURL("http://www.yahoo.com")
 
 # 下載網絡文件到本地
-download.file("URL","存檔名稱", mode="wb")
+download.file("http://www.r-project.org/Rlogo.png","Rlogo.png", mode="wb")
+
 
 # 執行某個檔案
 shell.exec("C:/hospital.xlsx")
@@ -172,10 +156,34 @@ winDialog("yesno", "愛上R了嗎?")
 # 讓User輸入資料
 print("請問您幾歲")
 age <- readLines(n=1)
+age
 
 # 設定輸出的小數點位數
-options(digits = 10)
+10/3
+options(digits = 20)
+
 # 避免以科學符號呈現過長數值 (8.888888889e+84)
-options(scipen = 84)
+888888888888888888888888888888
+options(scipen = 0)
+
 # 從剪貼簿載入資料
-readLines("clipboard")
+readLines("clipboard", warn = F)
+
+# 禁止字串被自動轉為因子，通常在載入資料框架時使用
+xData <- data.frame(subjectid, age, sex, disease)
+str(xData)
+xData$sex[which(xData$sex=="Male")] <- "男"
+
+xData <- data.frame(subjectid, age, sex, disease, stringsAsFactors = FALSE)
+str(xData)
+xData$sex[which(xData$sex=="Male")] <- "男"
+
+# 暫時停止程式
+  repeat{
+    print("爬資料要爬的很低調")
+    Sys.sleep(runif(1)*5)
+  }
+
+
+
+

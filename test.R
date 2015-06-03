@@ -1,0 +1,6 @@
+subjectid<-c(1, 2, 3, 4)
+age<-c(35, 55, 45, 25)
+sex<-c("Male", "Male", "Female", "Female")
+disease<-c("Yes", "No", "No", "Yes")
+xData <- data.frame(subjectid, age, sex, disease)
+write.csv(xData, file="xData.csv", quote = F, row.names = F)

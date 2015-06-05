@@ -5,6 +5,16 @@ xlsx <- loadWorkbook("hospital.xlsx")
 hospitalData <- readWorksheet(xlsx,1)
 head(hospitalData)
 
+tmp <- read.csv("hospital.csv")
+tmp$ID <- as.character(tmp$ID)
+tmp$Hospital_name <- as.character(tmp$Hospital_name)
+tmp$Hospital_Parking <- as.character(tmp$Hospital_Parking)
+tmp$Hospital_Tel <- as.character(tmp$Hospital_Tel)
+hospitalData <- tmp
+
+
+
+
 hospitalData$Hospital_location_lat <- as.numeric(hospitalData$Hospital_location_lat)
 hospitalData$Hospital_location_lng <- as.numeric(hospitalData$Hospital_location_lng)
 hospitalData$Hospital_Parking <- as.factor(hospitalData$Hospital_Parking)
